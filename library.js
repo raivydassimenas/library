@@ -45,3 +45,10 @@ function displayLibrary() {
 }
 
 displayLibrary();
+
+document.querySelector("#newBookForm").style.visibility = "hidden";
+
+function newBook() {
+    document.querySelector("#newBookForm").style.visibility = "visible";
+    document.querySelector("#newButton").style.visibility = "hidden";
+}
