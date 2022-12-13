@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,36 +8,50 @@
     <title>Library</title>
     <link rel="stylesheet" href="/dist/output.css" type="text/css">
 </head>
+
 <body>
     <div class="container">
-    <table class="table mx-auto my-2">
-        <thead class="table-header-group bg-slate-500">
-            <tr class="table-row w-full">
-            <th class="table-cell w-1/6 border-solid border-2 border-black p-1">Title</th>
-            <th class="table-cell w-1/6 border-solid border-2 border-black p-1">Author</th>
-            <th class="table-cell w-1/6 border-solid border-2 border-black p-1">Pages</th>
-            <th class="table-cell w-1/6 border-solid border-2 border-black p-1">Read</th>
-            <th class="table-cell w-1/6 border-solid border-2 border-black p-1">Toggle read</th>
-            <th class="table-cell w-1/6 border-solid border-2 border-black p-1">Delete</th>
-            </tr>
-        </thead>
-        <tbody id="library" class="table-row-group"></tbody>
-    </table>
+        <h1 class="text-center text-lg font-bold">Library</h1>
 
-    <div class="flex">
-    <button id="newButton" class="mx-auto rounded-full bg-slate-500 border-solid border-2 border-black p-1" onclick="newBook()">NEW BOOK</button>
+        <table class="table mx-auto my-2">
+            <thead class="table-header-group bg-slate-500">
+                <tr class="table-row w-full">
+                    <th class="table-cell w-1/6 border-solid border-2 border-black p-1">Title</th>
+                    <th class="table-cell w-1/6 border-solid border-2 border-black p-1">Author</th>
+                    <th class="table-cell w-1/6 border-solid border-2 border-black p-1">Pages</th>
+                    <th class="table-cell w-1/6 border-solid border-2 border-black p-1">Read</th>
+                    <th class="table-cell w-1/6 border-solid border-2 border-black p-1">Toggle read</th>
+                    <th class="table-cell w-1/6 border-solid border-2 border-black p-1">Delete</th>
+                </tr>
+            </thead>
+            <tbody id="library" class="table-row-group"></tbody>
+        </table>
+
+        <div class="flex">
+            <button id="newButton" class="mx-auto rounded-full bg-slate-500 border-solid border-2 border-black p-1"
+                onclick="newBook()">NEW BOOK</button>
+        </div>
+
+        <form id="newBookForm" onsubmit="submitNewBook(e);">
+            <div
+                class="p-2 my-2 mx-auto flex flex-col items-center justify-items-center w-1/4 border-solid border-2 border-black">
+                <input type="text" id="title" class="m-2 p-2 border-solid border-2 border-black" placeholder="Title">
+                <input type="text" id="author" class="m-2 p-2 border-solid border-2 border-black" placeholder="Author">
+                <input type="number" id="pages" class="m-2 p-2 border-solid border-2 border-black" placeholder="Pages">
+                <div><input type="checkbox" class="m-2 p-2 border-solid border-2 border-black" id="read">
+                    <label for="read" class="p-2 m-2">Read</label>
+                </div>
+                <div>
+                <button type="submit" class="rounded-full bg-slate-500 border-solid border-2 border-black p-1 m-2"
+                    id="submitNewBook">SUBMIT</button>
+                    <button class="rounded-full bg-slate-500 border-solid border-2 border-black p-1 m-2"
+                    id="submitNewBook" onclick="cancelNewBook()">CANCEL</button>
+                    </div>
+            </div>
+        </form>
     </div>
 
-    <form id="newBookForm" class="mx-auto" onsubmit="submitNewBook(e);">
-        <input type="text" id="title" placeholder="Title">
-        <input type="text" id="author" placeholder="Author">
-        <input type="number" id="pages" placeholder="Pages">
-        <input type="checkbox" id="read">
-        <label for="read">Read</label>
-        <button type="submit" class="rounded-full bg-slate-500 border-solid border-2 border-black p-1" id="submitNewBook">SUBMIT</button>
-    </form>
-    </div>
-    
     <script src="./library.js"></script>
 </body>
+
 </html>

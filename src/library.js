@@ -115,5 +115,10 @@ function submitNewBook(e) {
     e.preventDefault();
 }
 
+function cancelNewBook() {
+    document.querySelector("#newBookForm").style.visibility = "hidden";
+    document.querySelector("#newButton").style.visibility = "visible";
+}
+
 const submitNewBookButton = document.querySelector("#submitNewBook");
 submitNewBookButton.addEventListener("click", submitNewBook, false);
