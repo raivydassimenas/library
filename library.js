@@ -14,14 +14,21 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
-function addBookToLibrary() {
+function deleteBook(e) {
+    const index = e.target.getAttribute("data");
+    console.log(index);
 
+    myLibrary.splice(index, 1);
+
+    displayLibrary();
 }
 
 function displayLibrary() {
     const library = document.querySelector("#library");
 
-    myLibrary.forEach(book => {
+    library.innerHTML = "";
+
+    myLibrary.forEach((book, index) => {
         const bookElem = document.createElement("tr");
 
         const title = document.createElement("td");
@@ -40,6 +47,17 @@ function displayLibrary() {
         read.innerText = book.read ? "Read" : "Not read";
         bookElem.appendChild(read);
 
+        const deleteCell = document.createElement("td");
+        const del = document.createElement("button");
+        del.setAttribute("data", index);
+        del.addEventListener("click", deleteBook, false);
+        del.innerText = "DELETE";
+        deleteCell.appendChild(del);
+        bookElem.appendChild(deleteCell);
+
+
+        bookElem.setAttribute("data", index);
+
         library.appendChild(bookElem);
     });
 }
@@ -57,12 +75,12 @@ function newBook() {
 
 function submitNewBook(e) {
 
-    const newBook = {
-        title: document.querySelector("#title").value,
-        author: document.querySelector("#author").value,
-        pages: document.querySelector("#pages").value,
-        read: document.querySelector("#read").value
-    };
+    const newBook = new Book (
+        document.querySelector("#title").value,
+        document.querySelector("#author").value,
+        document.querySelector("#pages").value,
+        document.querySelector("#read").value
+    );
 
     myLibrary.push(newBook);
 
