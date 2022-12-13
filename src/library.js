@@ -16,9 +16,15 @@ function Book(title, author, pages, read) {
 
 function deleteBook(e) {
     const index = e.target.getAttribute("data");
-    console.log(index);
 
     myLibrary.splice(index, 1);
+
+    displayLibrary();
+}
+
+function toggleReadFunc(e) {
+    const index = e.target.getAttribute("data");
+    myLibrary[index].read = !myLibrary[index].read;
 
     displayLibrary();
 }
@@ -33,29 +39,46 @@ function displayLibrary() {
 
         const title = document.createElement("td");
         title.innerText = book.title;
+        title.classList = "table-cell border-solid border-2 border-black p-1";
         bookElem.appendChild(title);
 
         const author = document.createElement("td");
         author.innerText = book.author;
+        author.classList = "table-cell border-solid border-2 border-black p-1";
         bookElem.appendChild(author);
 
         const pages = document.createElement("td");
         pages.innerText = book.pages;
+        pages.classList = "table-cell border-solid border-2 border-black p-1";
         bookElem.appendChild(pages);
 
         const read = document.createElement("td");
         read.innerText = book.read ? "Read" : "Not read";
+        read.classList = "table-cell border-solid border-2 border-black p-1 text-center";
         bookElem.appendChild(read);
+
+        const toggleReadCell = document.createElement("td");
+        const toggleRead = document.createElement("button");
+        toggleRead.addEventListener("click", toggleReadFunc, false);
+        toggleRead.setAttribute("data", index);
+        toggleRead.innerText = "READ";
+        toggleRead.classList = "rounded-full bg-slate-500 border-solid border-2 border-black p-1";
+        toggleReadCell.appendChild(toggleRead);
+        toggleReadCell.classList = "table-cell border-solid border-2 border-black p-1 text-center";
+        bookElem.appendChild(toggleReadCell);
 
         const deleteCell = document.createElement("td");
         const del = document.createElement("button");
         del.setAttribute("data", index);
         del.addEventListener("click", deleteBook, false);
         del.innerText = "DELETE";
+        del.classList = "rounded-full bg-slate-500 border-solid border-2 border-black p-1";
         deleteCell.appendChild(del);
+        deleteCell.classList = "table-cell border-solid border-2 border-black p-1 text-center";
         bookElem.appendChild(deleteCell);
 
 
+        bookElem.classList = "table-row"
         bookElem.setAttribute("data", index);
 
         library.appendChild(bookElem);
