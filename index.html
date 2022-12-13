@@ -22,13 +22,13 @@
 
     <button id="newButton" onclick="newBook()">NEW BOOK</button>
 
-    <form id="newBookForm">
+    <form id="newBookForm" onsubmit="submitNewBook(e);">
         <input type="text" id="title" placeholder="Title">
         <input type="text" id="author" placeholder="Author">
         <input type="number" id="pages" placeholder="Pages">
         <input type="checkbox" id="read">
         <label for="read">Read</label>
-        <button type="submit" onclick="submitNewBook(e)">Submit</button>
+        <button type="submit" id="submitNewBook">Submit</button>
     </form>
     
     <script src="./library.js"></script>

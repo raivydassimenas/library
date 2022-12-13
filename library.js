@@ -52,3 +52,27 @@ function newBook() {
     document.querySelector("#newBookForm").style.visibility = "visible";
     document.querySelector("#newButton").style.visibility = "hidden";
 }
+
+
+
+function submitNewBook(e) {
+
+    const newBook = {
+        title: document.querySelector("#title").value,
+        author: document.querySelector("#author").value,
+        pages: document.querySelector("#pages").value,
+        read: document.querySelector("#read").value
+    };
+
+    myLibrary.push(newBook);
+
+    displayLibrary();
+
+    document.querySelector("#newBookForm").style.visibility = "hidden";
+    document.querySelector("#newButton").style.visibility = "visible";
+
+    e.preventDefault();
+}
+
+const submitNewBookButton = document.querySelector("#submitNewBook");
+submitNewBookButton.addEventListener("click", submitNewBook, false);
