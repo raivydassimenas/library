@@ -127,13 +127,13 @@ function submitNewBook(e) {
     let errorMsg = "";
 
     if (!title.checkValidity()) {
-        errorMsg += title.validationMessage;
+        errorMsg += "Title: " + title.validationMessage + "\n";
     }
     if (!author.checkValidity()) {
-        errorMsg += author.validationMessage;
+        errorMsg += "Author: " + author.validationMessage + "\n";
     }
     if (!pages.checkValidity()) {
-        errorMsg += pages.validationMessage;
+        errorMsg += "Pages: " + pages.validationMessage + "\n";
     }
 
     alert(errorMsg);
